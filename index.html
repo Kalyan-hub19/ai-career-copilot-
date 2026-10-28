@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101522">
+<title>CareerPilot — AI Resume Analyzer</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2c;--panel2:#172238;--line:#293650;--text:#f3f6ff;--muted:#a3aec5;--accent:#9af0d0;--accent2:#b7a7ff;--danger:#ff9b9b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1b3150 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:1120px;margin:auto;padding:28px 20px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:42px}.brand{display:flex;gap:11px;align-items:center;font-weight:800;font-size:20px;letter-spacing:-.5px}.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7ab9ff);color:#101522;font-weight:900}.pill{border:1px solid #355146;color:var(--accent);border-radius:99px;padding:6px 11px;font-size:12px;white-space:nowrap}
+.hero{max-width:760px;margin:0 auto 32px;text-align:center}.eyebrow{color:var(--accent);font-weight:700;font-size:12px;letter-spacing:1.7px;text-transform:uppercase}.hero h1{font-size:clamp(34px,5.8vw,58px);line-height:1.05;letter-spacing:-2.2px;margin:13px 0 16px}.gradient{background:linear-gradient(100deg,#9af0d0,#b7a7ff 65%,#7ab9ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:17px;max-width:620px;margin:auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:linear-gradient(180deg,rgba(23,34,56,.96),rgba(18,26,44,.96));border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 15px 40px #0002}.panel-head{display:flex;align-items:center;gap:11px;margin-bottom:14px}.step{width:32px;height:32px;display:grid;place-items:center;background:#25344c;border-radius:10px;color:var(--accent);font-weight:800}.panel h2{font-size:16px;margin:0}.sub{font-size:12px;color:var(--muted);margin-top:2px}textarea{width:100%;min-height:245px;resize:vertical;border:1px solid #33425d;border-radius:12px;background:#0d1424;color:var(--text);padding:14px;font:13px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;outline:none}textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px #9af0d01c}textarea::placeholder{color:#6e7c95}.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;flex-wrap:wrap}.btn{border:0;border-radius:12px;background:linear-gradient(100deg,var(--accent),#a9d8ff);color:#0b1420;font-weight:800;padding:13px 20px;cursor:pointer;font-size:14px}.btn:disabled{opacity:.55;cursor:wait}.quiet{background:transparent;color:var(--muted);border:1px solid var(--line);padding:10px 14px;border-radius:10px;cursor:pointer}.hint{font-size:12px;color:var(--muted)}.status{display:none;margin-top:18px;padding:12px 14px;border-radius:12px;background:#18253a;border:1px solid var(--line);color:var(--muted)}.status.show{display:block}.status.error{color:var(--danger);border-color:#673d4b}.results{margin-top:22px;display:none}.results.show{display:block}.results-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.results h2{font-size:22px;margin:0}.scoregrid{display:grid;grid-template-columns:180px 1fr;gap:16px;margin-bottom:16px}.scorebox{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:160px}.score{font-size:48px;font-weight:850;letter-spacing:-2px;line-height:1.1}.score small{font-size:17px;color:var(--muted);letter-spacing:0}.score-label{color:var(--muted);font-size:12px;margin-top:9px}.summary{color:#dce4f4;margin:0}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.result-card h3{margin:0 0 12px;font-size:15px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{font-size:12px;padding:5px 9px;border-radius:8px;background:#24334b;color:#dce8ff;border:1px solid #344764}.chip.good{color:var(--accent);background:#17352f;border-color:#285449}.chip.warn{color:#ffd28a;background:#3b2d1b;border-color:#5c4628}.plainlist{margin:0;padding-left:18px;color:#dce4f4}.plainlist li{margin:7px 0}.section{margin-top:16px}.section p{margin:0;color:#dce4f4}.roleline{color:var(--accent);font-weight:700}.footer{margin-top:36px;text-align:center;color:#7e8ba4;font-size:12px}.footer a{color:var(--accent)}@media(max-width:760px){.wrap{padding:20px 14px 40px}.top{margin-bottom:32px}.grid,.result-grid{grid-template-columns:1fr}.scoregrid{grid-template-columns:1fr}.scorebox{min-height:130px}.hero h1{letter-spacing:-1.3px}.panel{padding:16px}textarea{min-height:210px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">CP</div> CareerPilot</div><div class="pill">✦ AI-powered career insights</div></header>
+<section class="hero"><div class="eyebrow">Your next opportunity starts here</div><h1>Make your resume work <span class="gradient">smarter.</span></h1><p>Compare your resume with a job description and get a practical, keyword-aware action plan in seconds.</p></section>
+<main>
+<div class="grid">
+<section class="panel"><div class="panel-head"><div class="step">01</div><div><h2>Your resume</h2><div class="sub">Paste resume text below</div></div></div><textarea id="resume" aria-label="Resume text" placeholder="Paste your resume here...
+
+Include your summary, skills, education, experience, projects, and achievements."></textarea><div class="actions"><span class="hint" id="resumeCount">0 characters</span><button class="quiet" id="sampleResume" type="button">Load sample</button></div></section>
+<section class="panel"><div class="panel-head"><div class="step">02</div><div><h2>Target job description</h2><div class="sub">Paste the role you want</div></div></div><textarea id="job" aria-label="Job description" placeholder="Paste the job description here...
+
+Include responsibilities, requirements, and preferred skills."></textarea><div class="actions"><span class="hint" id="jobCount">0 characters</span><button class="quiet" id="sampleJob" type="button">Load sample</button></div></section>
+</div>
+<div class="actions"><span class="hint">Your resume is sent to Gemini for analysis only when you click Analyze.</span><button class="btn" id="analyze">Analyze my match&nbsp; →</button></div>
+<div id="status" class="status" role="status"></div>
+<section id="results" class="results" aria-live="polite">
+<div class="results-top"><h2>Your match report</h2><button id="download" class="quiet" type="button">Download report (.txt)</button></div>
+<div class="scoregrid"><div class="panel scorebox"><div class="score" id="score">—<small>/100</small></div><div class="score-label">Estimated resume match</div></div><div class="panel"><h3>Recruiter-style summary</h3><p class="summary" id="summary"></p><div class="section"><span class="sub">BEST-FIT ROLE</span><div class="roleline" id="role"></div></div></div></div>
+<div class="result-grid">
+<div class="panel result-card"><h3>✓ Matching keywords</h3><div id="matching" class="chips"></div></div>
+<div class="panel result-card"><h3>＋ Missing or weak keywords</h3><div id="missing" class="chips"></div></div>
+<div class="panel result-card"><h3>Strengths to keep</h3><ul id="strengths" class="plainlist"></ul></div>
+<div class="panel result-card"><h3>Priority improvements</h3><ul id="improvements" class="plainlist"></ul></div>
+<div class="panel result-card"><h3>Suggested resume bullets</h3><ul id="bullets" class="plainlist"></ul></div>
+<div class="panel result-card"><h3>Interview preparation</h3><ul id="interview" class="plainlist"></ul></div>
+</div><p class="hint" style="margin-top:14px">The match score is an AI-generated estimate, not an official ATS score or a guarantee of selection. Keep all resume claims truthful.</p>
+</section>
+</main>
+<footer class="footer">Built with Gemini API · CareerPilot · <a href="https://aistudio.google.com/" target="_blank" rel="noreferrer">Get a Gemini API key</a></footer>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const sampleResume = `Lakavath Kalyan
+B.Tech Computer Science Engineering | MANIT Bhopal | 2026
+Skills: SQL, PostgreSQL, Excel, Power BI, Python, Pandas, NumPy, Scikit-learn
+Projects:
+• Loan Risk Dashboard: Analyzed 14,000+ loan records and visualized risk exposure using dashboards.
+• Sales Dashboard: Built an Excel dashboard to track 1,000+ transactions and identify sales trends.
+• Diabetes Prediction: Built an SVM classification model with 82.4% accuracy on a diabetes dataset.
+Education: B.Tech CSE, MANIT Bhopal`;
+const sampleJob = `Junior Data Analyst
+Responsibilities: Clean and analyze datasets, write SQL queries, build dashboards, track KPIs, identify trends, and communicate insights to stakeholders.
+Requirements: Strong Excel and SQL skills, Power BI or Tableau, basic Python, data visualization, attention to detail, problem-solving, and clear communication. Fresh graduates are welcome.`;
+function updateCounts(){ $('resumeCount').textContent=$('resume').value.length+' characters'; $('jobCount').textContent=$('job').value.length+' characters'; }
+$('resume').addEventListener('input',updateCounts); $('job').addEventListener('input',updateCounts);
+$('sampleResume').onclick=()=>{$('resume').value=sampleResume;updateCounts()};
+$('sampleJob').onclick=()=>{$('job').value=sampleJob;updateCounts()};
+let latestReport=null;
+function listInto(id, items, cls=''){const el=$(id);el.innerHTML='';(Array.isArray(items)?items:[]).forEach(item=>{const li=document.createElement('li');li.textContent=String(item);el.appendChild(li)});if(!items||!items.length){const li=document.createElement('li');li.textContent='No items returned.';el.appendChild(li)}}
+function chipsInto(id, items, cls=''){const el=$(id);el.innerHTML='';(Array.isArray(items)?items:[]).forEach(item=>{const s=document.createElement('span');s.className='chip '+cls;s.textContent=String(item);el.appendChild(s)});if(!items||!items.length){const s=document.createElement('span');s.className='hint';s.textContent='None identified';el.appendChild(s)}}
+function showStatus(message,error=false){$('status').textContent=message;$('status').className='status show'+(error?' error':'')}
+$('analyze').onclick=async()=>{
+ const resume=$('resume').value.trim(), jobDescription=$('job').value.trim();
+ if(resume.length<50||jobDescription.length<50){showStatus('Please paste both a resume and a job description (at least 50 characters each).',true);return}
+ $('analyze').disabled=true;$('analyze').textContent='Analyzing…';$('results').classList.remove('show');showStatus('Gemini is reviewing your resume against the job requirements…');
+ try{
+  const res=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({resume,jobDescription})});
+  const data=await res.json();
+  if(!res.ok)throw new Error(data.error||'Analysis failed. Please try again.');
+  const r=data.report||data;
+  if(typeof r.ats_score!=='number')throw new Error('The AI response was incomplete. Please click Analyze again.');
+  latestReport=r;
+  $('score').innerHTML=String(Math.max(0,Math.min(100,Math.round(r.ats_score))))+'<small>/100</small>';
+  $('summary').textContent=r.summary||'No summary returned.';
+  $('role').textContent=r.best_fit_role||'Not specified';
+  chipsInto('matching',r.matching_keywords,'good');chipsInto('missing',r.missing_keywords,'warn');
+  listInto('strengths',r.strengths);listInto('improvements',r.improvements);listInto('bullets',r.suggested_bullets);listInto('interview',r.interview_questions);
+  $('results').classList.add('show');showStatus('Analysis complete. Review the suggestions and keep all claims accurate.');
+  $('results').scrollIntoView({behavior:'smooth',block:'start'});
+ }catch(e){showStatus(e.message||'Something went wrong. Check your deployment and API key.',true)}
+ finally{$('analyze').disabled=false;$('analyze').textContent='Analyze my match  →'}
+};
+$('download').onclick=()=>{
+ if(!latestReport)return;
+ const r=latestReport;const text=`CAREERPILOT — RESUME MATCH REPORT\nEstimated match: ${r.ats_score}/100\nBest-fit role: ${r.best_fit_role||''}\n\nSUMMARY\n${r.summary||''}\n\nMATCHING KEYWORDS\n${(r.matching_keywords||[]).join(', ')}\n\nMISSING / WEAK KEYWORDS\n${(r.missing_keywords||[]).join(', ')}\n\nSTRENGTHS\n${(r.strengths||[]).map(x=>'• '+x).join('\n')}\n\nPRIORITY IMPROVEMENTS\n${(r.improvements||[]).map(x=>'• '+x).join('\n')}\n\nSUGGESTED BULLETS\n${(r.suggested_bullets||[]).map(x=>'• '+x).join('\n')}\n\nINTERVIEW QUESTIONS\n${(r.interview_questions||[]).map(x=>'• '+x).join('\n')}\n\nAI-generated estimate only. Validate all claims before using them.`;
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));a.download='careerpilot-match-report.txt';a.click();URL.revokeObjectURL(a.href);
+};
+updateCounts();
+</script>
+</body></html>

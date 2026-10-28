@@ -1,0 +1,6 @@
+{
+  "name": "ai-career-copilot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI resume analyzer powered by Gemini and Vercel serverless functions"
+}
